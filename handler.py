@@ -1,10 +1,11 @@
 import json
 import random
 
-def pick(a, b):
-    return random.choice([a, b])
+def pick(options):
+    return random.choice(options)
 
 def handler(event, context):
     body = json.loads(event.get("body") or "{}")
-    choice = pick(body["a"], body["b"])
+    options = body.get("options", [])
+    choice = pick(options)
     return {"statusCode": 200, "body": json.dumps({"choice": choice})}
