@@ -2,9 +2,7 @@
 
 A one-file Lambda app with a CI/CD pipeline in front of it. Send it a list of options, it picks one. Every push to `main` runs the tests, and if they pass, GitHub Actions ships the new code to Lambda. If they fail, nothing ships.
 
-This is the demo from the video **I Stopped Deploying By Hand (CI/CD for Beginners)** on the AWS Developers YouTube channel and its companion blog post on AWS Builder Center.
-
-<!-- TODO: add video and blog links -->
+This is the demo from the video [**I Stopped Deploying By Hand (CI/CD for Beginners)**](https://www.youtube.com/watch?v=U4wnx9CrfNs) on the AWS Developers YouTube channel and its companion post on AWS Builder Center, [CI/CD for beginners: I pushed broken code and GitHub Actions saved me](https://builder.aws.com/content/3JSa4inRTKoemKNdSMpThhAlPw8/cicd-for-beginners-i-pushed-broken-code-and-github-actions-saved-me?trk=23ae1f57-152e-4145-9aa7-04a603514f54&sc_channel=el).
 
 ## The three files
 
