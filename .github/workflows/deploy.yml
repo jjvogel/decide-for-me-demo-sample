@@ -5,11 +5,22 @@ on:
     branches: [ main ]
 
 permissions:
-  id-token: write   # lets the workflow do the OIDC handshake with AWS
+  id-token: write   # required, lets the job request an OIDC token
   contents: read
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest
+      - run: pytest
+
   deploy:
+    needs: test          # deploy only runs if tests pass
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
