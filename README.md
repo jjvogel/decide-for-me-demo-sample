@@ -28,11 +28,11 @@ You need the AWS CLI configured with credentials that can create IAM roles and L
 
    This registers GitHub as an OIDC identity provider in your account (once per account), creates the Lambda execution role and the `decide-for-me` function, and creates the `decide-for-me-deploy` role that GitHub Actions assumes. The trust policy is pinned to your fork's `main` branch and the permission policy allows only `lambda:UpdateFunctionCode` on that one function.
 
-   The script prints a role ARN when it finishes.
+   The script prints a role ARN when it finishes. It's meant to run once. If you need to start over, run `./setup/teardown.sh` first.
 
 3. Paste that ARN into `.github/workflows/deploy.yml` under `role-to-assume`, replacing the account ID that's there.
 
-4. Commit and push to `main`. Open the Actions tab and watch `test` run, then `deploy`.
+4. Commit and push to `main`. Open the Actions tab and watch `test` run, then `deploy`. On a fork, GitHub disables workflows until you click **Enable** on the Actions tab, so do that first if the run doesn't appear.
 
 5. Call the function:
 
