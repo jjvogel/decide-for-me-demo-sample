@@ -1,11 +1,14 @@
 import json
 import random
 
-def pick(options):
+def pick(options, exclude=None):
+    if exclude:
+        options = [o for o in options if o not in exclude]
     return random.choice(options)
 
 def handler(event, context):
     body = json.loads(event.get("body") or "{}")
     options = body.get("options", [])
-    choice = pick(options)
+    exclude = body.get("exclude", [])
+    choice = pick(options, exclude)
     return {"statusCode": 200, "body": json.dumps({"choice": choice})}
